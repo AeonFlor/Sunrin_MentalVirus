@@ -1,8 +1,9 @@
 #-*- coding: utf-8 -*-
 import wx
+import sys
 
 app = wx.App(False)
-path = "Y:\Documents\Spyware\screenshot.png"
+path = "C:\Users\Harin\screenshot.png"
 
 screen = wx.ScreenDC() # 화면 저장
 width, height = screen.Size.Get() # 저장한 거 사이즈 구함
@@ -17,3 +18,4 @@ try:
 	print("Success!\n")
 except:
 	print("Error!\n")
+sys.exit()
